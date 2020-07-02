@@ -1,0 +1,17 @@
+{
+  "name": "arbyte-api",
+  "version": "1.0.0",
+  "description": "Minha primeira API com ARBYTE",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Indira Singh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
