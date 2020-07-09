@@ -19,11 +19,15 @@ router.get(`${routeName}/:id`, (req, res) => {
 
 //Cria um produto
 router.post(routeName, (req, res) => {
-    console.log(req.body)
+    const products = {
+        name: req.body.name,
+        price: req.body.price,
+    };
     res.status(201).json({
-        message: 'Cria um produto'
+        message: 'Insere um produto',
+        createdProduct: products
     })
-})
+});
 
 //Edita os dados de um produto
 router.patch(`${routeName}/:id`, (req, res) => {

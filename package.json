@@ -4,7 +4,13 @@
   "description": "Minha primeira API com ARBYTE",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "nodemon server.js",
+    "migration:create": "knex migrate:make",
+    "migration:up": "knex migrate:latest",
+    "migration:down": "knex migrate:rollback"
+    
+    
   },
   "keywords": [
     "node"
@@ -12,6 +18,15 @@
   "author": "Indira Singh",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "knex": "^0.21.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.2.2",
+    "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }

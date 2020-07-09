@@ -7,4 +7,13 @@ const router = new Router();
 router.use(orders);
 router.use(products);
 
+
+//quando não encontra uma rota, passa por aqui.
+router.use((req, res, next) => {
+    const erro = new Error('não foi encontrado');
+    erro.status = 404;
+    next(erro);
+});
+
+
 module.exports = router;
