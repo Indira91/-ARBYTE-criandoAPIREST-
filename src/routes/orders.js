@@ -22,7 +22,7 @@ router.post(routeName, (req, res) => {
 
     const orders = {
         id_products: req.body.id_products,
-        amount: req.body.amount
+        quantity: req.body.quantity
     }
     res.status(201).json({
         message: 'Cria um pedido',
