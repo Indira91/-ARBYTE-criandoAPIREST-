@@ -27,8 +27,12 @@ const create = async order => {
 
 };
 
+//UPDATE orders SET product_id=?, quantity=? value=? WHERE id=?
+const update = (id, order) => knex(tableName).where({id: id}).update(order);
+
 module.exports = {
     getAll,
     create,
     getById,
+    update,
 };
