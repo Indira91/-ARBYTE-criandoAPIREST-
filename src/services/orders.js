@@ -1,4 +1,7 @@
 const repository = require("../repositories/orders");
+const { production } = require("../../knexfile");
+const productService = require('./products');
+const Order = require("../models/order")
 
 const getAll = () => repository.getAll();
 
@@ -10,10 +13,21 @@ const getById = async (id) => {
     return order;
 };
 
-const create = async (order) => {
-    const id = await repository.create(order);
-    const created = await repository.getById(id);
-   return created;
+const create = async (data) => {
+    const order = new Order({
+        ...data,
+        id: undefined,
+        cretaed_at: undefined,
+        updated_at: undefined,
+    });
+
+    const product = await productService.getById(order.product_id);
+  
+    const value = order.quantity * product.price;
+
+    const id = await repository.create({...order, value: Number(value.toFixed(2))});
+    return repository.getById(id);
+   
 };
 
 module.exports = {

@@ -1,24 +1,29 @@
 const knex = require("../../database");
 const moment = require("moment");
+const Order = require("../models/order");
 
 const tableName = "orders";
 
 //SELECT * FROM orders
 
-const getAll = () => knex(tableName);
+const getAll = async () => {
+const orders = await knex(tableName);
+return orders.map((order) => new Order(order));
+};
 
-const getById = (id) => {
-    return knex(tableName)
-         .where({id: id})
-         .then(([order]) => order);
+
+//SELECT * FROM orders WHERE id = ?
+
+const getById = async (id) => {
+    const [order] = await knex(tableName).where({ id:id });
+    return new Order(order);
  };
 
-//SELECT * FROM orders (id, quantity, price) VALUES (?, ?, ?)
+//INSERT INTO orders (product_id, )
 
-const create = (order) => {
-   return knex(tableName)
-   .insert(order)
-   .then(([inserted]) => inserted);
+const create = async order => {
+  const [id] = await knex(tableName).insert(order);
+  return id;
 
 };
 
