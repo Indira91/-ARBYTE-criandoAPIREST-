@@ -22,7 +22,7 @@ const login = async (req, res) => {
         res.json(data)
 
     }catch (error) {
-        havingWrapped(res, error);
+       handleError(res, error);
     }
 };
 

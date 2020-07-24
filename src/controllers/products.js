@@ -31,6 +31,7 @@ const create = async (req, res) => {
 
 const update = async (req, res) => {
     try {
+        console.log("id do usuario logado");
        const updated = await service.update(req.params.id, req.body); 
         res.json(updated);
     } catch (error) {
