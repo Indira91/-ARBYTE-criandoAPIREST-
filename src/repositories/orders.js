@@ -22,7 +22,7 @@ const getById = async (id) => {
 //INSERT INTO orders (product_id, )
 
 const create = async order => {
-  const [id] = await knex(tableName).insert(order);
+  const id = await knex(tableName).insert(order);
   return id;
 
 };
