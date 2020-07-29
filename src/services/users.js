@@ -5,6 +5,12 @@ const { createToken } =require("./utils/jwt")
 
 
 const create = async (data) => {
+
+    const users = await repository.getOne({email: data.email})
+    if (users.id) {
+        throw {status: 400, message: 'Usuario ja existe'}
+    }
+
     const user = new User({
         ...data,
         id: undefined,
