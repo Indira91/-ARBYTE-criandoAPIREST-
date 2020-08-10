@@ -9,6 +9,4 @@ router.post(routeName, controller.create);
 
 router.post(`${routeName}/login`, controller.login);
 
-//router.patch(`${routeName}/password/:id`, controller.update);
-
 module.exports = router;
